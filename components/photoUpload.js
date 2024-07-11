@@ -33,7 +33,7 @@ export default function PhotoUpload({ onUpload }) {
       formData.append("photo", file);
 
       const response = await axios.post(
-        "/upload", // Adjust URL to your backend endpoint
+        "https://upload-photo-comments-server.vercel.app/upload", // Adjust URL to your backend endpoint
         formData,
         {
           headers: {

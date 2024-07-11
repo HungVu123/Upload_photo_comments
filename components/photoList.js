@@ -19,10 +19,13 @@ export default function PhotoList({ photos }) {
 
   const handleAddComment = async (photoId, text) => {
     try {
-      const response = await axios.post("/comments", {
-        photoId,
-        text,
-      });
+      const response = await axios.post(
+        "https://upload-photo-comments-server.vercel.app/comments",
+        {
+          photoId,
+          text,
+        }
+      );
       const newComment = response.data;
       setComments((prev) => ({
         ...prev,

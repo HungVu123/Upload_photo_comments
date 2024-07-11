@@ -15,22 +15,31 @@ export default function Home() {
   const [photos, setPhotos] = useState([]);
 
   const fetchPhotos = async () => {
-    const response = await axios.get("/");
-    setPhotos(response.data);
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        "https://upload-photo-comments-server.vercel.app"
+      );
+      setPhotos(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch photos:", error);
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchPhotos();
   }, []);
 
-  const handleUpload = () => {
-    fetchPhotos();
+  const handleUpload = async () => {
+    await fetchPhotos();
   };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header />
-      <Content style={{ padding: "2em" }}>
+      <Content style={{ padding: "2em", marginTop: "64px" }}>
         <Title level={2}>Photo Upload and Comment</Title>
         <PhotoUpload onUpload={handleUpload} />
         <PhotoList photos={photos} />
