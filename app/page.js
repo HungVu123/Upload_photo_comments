@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header />
-      <Content style={{ padding: "2em", marginTop: "64px" }}>
+      <Content style={{ padding: "2em" }}>
         <Title level={2}>Photo Upload and Comment</Title>
         <PhotoUpload onUpload={handleUpload} />
         <PhotoList photos={photos} />
