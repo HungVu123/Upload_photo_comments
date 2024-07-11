@@ -16,15 +16,12 @@ export default function Home() {
 
   const fetchPhotos = async () => {
     try {
-      setLoading(true);
       const response = await axios.get(
         "https://upload-photo-comments-server.vercel.app"
       );
       setPhotos(response.data);
-      setLoading(false);
     } catch (error) {
       console.error("Failed to fetch photos:", error);
-      setLoading(false);
     }
   };
 
