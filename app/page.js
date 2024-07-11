@@ -15,7 +15,7 @@ export default function Home() {
   const [photos, setPhotos] = useState([]);
 
   const fetchPhotos = async () => {
-    const response = await axios.get("/photos");
+    const response = await axios.get("/");
     setPhotos(response.data);
   };
 
